@@ -30,11 +30,11 @@ public final class Constants {
     public static final int ROLLER_MOTOR_ID = 5;
     public static final int ROLLER_MOTOR_CURRENT_LIMIT = 60;
     public static final double ROLLER_MOTOR_VOLTAGE_COMP = 10;
-    public static final double ROLLER_EJECT_VALUE = 0.44;
+    public static final double ROLLER_EJECT_VALUE = -0.24;
   }
 
   public static final class OperatorConstants {
     public static final int DRIVER_CONTROLLER_PORT = 0;
-    public static final int OPERATOR_CONTROLLER_PORT = 1;
+    public static final int OPERATOR_CONTROLLER_PORT = 0;
   }
 }

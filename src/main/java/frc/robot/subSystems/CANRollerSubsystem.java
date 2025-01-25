@@ -4,8 +4,12 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.RollerConstants;
+import java.util.function.DoubleSupplier;
+
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
@@ -18,7 +22,7 @@ public class CANRollerSubsystem extends SubsystemBase {
 
   public CANRollerSubsystem() {
     // Set up the roller motor as a brushed motor
-    rollerMotor = new SparkMax(RollerConstants.ROLLER_MOTOR_ID, MotorType.kBrushed);
+    rollerMotor = new SparkMax(RollerConstants.ROLLER_MOTOR_ID, MotorType.kBrushless);
 
     // Set can timeout. Because this project only sets parameters once on
     // construction, the timeout can be long without blocking robot operation. Code
@@ -39,8 +43,11 @@ public class CANRollerSubsystem extends SubsystemBase {
   public void periodic() {
   }
 
-  /** This is a method that makes the roller spin */
-  public void runRoller(double forward, double reverse) {
-    rollerMotor.set(forward - reverse);
+  // Command to run the roller with joystick inputs
+  public Command runRoller(
+      CANRollerSubsystem rollerSubsystem, DoubleSupplier forward, DoubleSupplier reverse) {
+    return Commands.run(
+        () -> rollerMotor.set(forward.getAsDouble() - reverse.getAsDouble()), rollerSubsystem);
   }
+
 }
