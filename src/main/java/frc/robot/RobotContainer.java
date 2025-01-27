@@ -12,9 +12,9 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.Constants.RollerConstants;
-import frc.robot.commands.AutoCommand;
-import frc.robot.commands.DriveCommand;
-import frc.robot.commands.RollerCommand;
+import frc.robot.Commands.AutoCommand;
+import frc.robot.Commands.DriveCommand;
+import frc.robot.Commands.RollerCommand;
 import frc.robot.subsystems.CANDriveSubsystem;
 import frc.robot.subsystems.CANRollerSubsystem;
 
