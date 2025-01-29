@@ -77,10 +77,10 @@ RobotConfig robotConfig;
 
     // create brushed motors for drive
     robotGyro = new Pigeon2(DriveConstants.GYRO_ID);
-    leftLeader = new SparkMax(DriveConstants.LEFT_LEADER_ID, MotorType.kBrushed);
-    leftFollower = new SparkMax(DriveConstants.LEFT_FOLLOWER_ID, MotorType.kBrushed);
-    rightLeader = new SparkMax(DriveConstants.RIGHT_LEADER_ID, MotorType.kBrushed);
-    rightFollower = new SparkMax(DriveConstants.RIGHT_FOLLOWER_ID, MotorType.kBrushed);
+    leftLeader = new SparkMax(DriveConstants.LEFT_LEADER_ID, MotorType.kBrushless);
+    leftFollower = new SparkMax(DriveConstants.LEFT_FOLLOWER_ID, MotorType.kBrushless);
+    rightLeader = new SparkMax(DriveConstants.RIGHT_LEADER_ID, MotorType.kBrushless);
+    rightFollower = new SparkMax(DriveConstants.RIGHT_FOLLOWER_ID, MotorType.kBrushless);
     m_rightEncoder = rightLeader.getEncoder();
     m_leftEncoder = leftLeader.getEncoder();
     robotOdometry = new DifferentialDriveOdometry(robotGyro.getRotation2d(),
@@ -180,8 +180,8 @@ public void driveRobotRelative(ChassisSpeeds chassisSpeeds) {
   double leftMotorSpeed = leftSpeed;
   double rightMotorSpeed = rightSpeed;
 
-  leftLeader.set(leftMotorSpeed);
-  rightLeader.set(rightMotorSpeed);
+  leftLeader.set(leftMotorSpeed/3);
+  rightLeader.set(rightMotorSpeed/3);
 }
 
 }
